@@ -56,6 +56,8 @@ Thanks to the following people who have contributed to this project:
 
 * [@SachetAdhikari](https://github.com/SachetAdhikari) 🎅
 * [@GunjanRajTiwari](https://github.com/GunjanRajTiwari) 🔥
+* [@SandeshDhungana]()
+* [@KapilDhungana]()
 
 
 ## Contact
