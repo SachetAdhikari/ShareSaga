@@ -25,8 +25,8 @@ mail = Mail(app)
 
 G = oauth.register(
     name='google',
-    client_id=os.environ.get('CLIENT_ID'),
-    client_secret=os.environ.get('CLIENT_SECRET'),
+    client_id=os.environ.get('CLIENT_ID'), #enter your client id
+    client_secret=os.environ.get('CLIENT_SECRET'), #enter your client secret key
     access_token_url='https://accounts.google.com/o/oauth2/token',
     access_token_params=None,
     authorize_url='https://accounts.google.com/o/oauth2/auth',
