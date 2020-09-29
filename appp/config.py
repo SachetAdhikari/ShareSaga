@@ -1,9 +1,9 @@
-import os
+from appp import app
 class Config():
-    SECRET_KEY= os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
-    MAIL_SERVER = 'smtp.gmail.com'
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    app.config['SECRET_KEY']= '138a79505fa3993f6a50dce42f55bd7de4b7ecb1'
+    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
+    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    app.config['MAIL_PORT'] = 587
+    app.config['MAIL_USE_TLS'] = True
+    app.config['MAIL_USERNAME'] = '#' #os.environ.get('EMAIL_USER')
+    app.config['MAIL_PASSWORD'] = '#' #os.environ.get('EMAIL_PASS')
