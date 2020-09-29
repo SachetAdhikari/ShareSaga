@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ image_file }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ current_user.fullname }} ({{current_user.vregno}})</h2>
+          <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+      </div>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.picture.label() }}
+                    {{ form.picture(class="form-control-file") }}
+                    {% if form.picture.errors %}
+                        {% for error in form.picture.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-primary") }}
+            </div>
+        </form>
+    </div>
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static',filename='profile_pics/'+ current_user.image_file) }}" >
+        <div class="media-body">
+          <h2><a class="article-title" href="{{ url_for('userPosts', vregno=current_user.vregno) }}">My Posts</a></h2>
+        </div>
+    </article>
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static',filename='profile_pics/'+ current_user.image_file) }}" >
+        <div class="media-body">
+          <h2><a class="article-title" href="{{ url_for('user_resources', user=current_user.vregno) }}">My Contributions</a></h2>
+        </div>
+    </article>
+{% endblock content %}

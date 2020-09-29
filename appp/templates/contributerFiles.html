@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if cfiles.items[0] %}
+        {% if from_account %}
+            <h3> Your Uploads on {{ sub }} </h3>
+        {% else %}
+            <h3> Resources form {{ contributer }} </h3>
+        {% endif %}
+    {% else %}
+        <h3> No Files Found! </h3>
+    {% endif %}
+    {% for cfile in cfiles.items %}
+        <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ url_for('static', filename='faculty_pics/' + 'resource.png') }}">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <small class="text-muted">{{ cfile.date_posted.strftime("%Y-%m-%d") }}</small>
+                    {% if contributer == current_user.vregno %}
+                    <small> <a class="text-muted" href="{{ url_for('edit_resource',user=contributer,sub=sub,rID=cfile.id)}}">Edit </a> </small>
+                    <small>  <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button> </small>
+                    {% endif %}
+                </div>
+                <h3><a class="article-title" href= "{{ url_for('download',file=cfile.resource_file_name) }}" > {{cfile.topic}} </a></h3>
+            </div>
+        </article>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete File?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form action="{{ url_for('delete_resource',user=contributer,sub=sub,rID=cfile.id)}}" method="POST">
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% for page_num in cfiles.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+          {% if cfiles.page == page_num %}
+            {% if from_account %}
+                <a class="btn btn-info mb-4" href="{{ url_for('user_contributer_files',contributer=contributer,sub=sub,page=page_num) }}" >{{ page_num }}</a>
+            {% else %}
+                <a class="btn btn-info mb-4" href="{{ url_for('contributer_files',contributer=contributer,sub=sub,page=page_num) }}" >{{ page_num }}</a>
+            {% endif %}
+          {% else %}
+            {% if from_account %}
+                <a class="btn btn-outline-info mb-4" href="{{ url_for('user_contributer_files',contributer=contributer,sub=sub,page=page_num) }}" >{{ page_num }}</a>
+            {% else %}
+                <a class="btn btn-outline-info mb-4" href="{{ url_for('contributer_files',contributer=contributer,sub=sub,page=page_num) }}" >{{ page_num }}</a>
+            {% endif %}
+          {% endif %}
+        {% else %}
+          ...
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

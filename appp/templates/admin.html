@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="content-section">
+    <form method="POST" action="" enctype="multipart/form-data">
+      {{ formA.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Add Course</legend>
+        <div class="form-group">
+          {{ formA.batch.label(class="form-control-label") }}
+          {{ formA.batch(class="form-control form-control-md") }}
+        </div>
+        <div class="form-group">
+          {{ formA.course.label(class="form-control-label") }}
+          {{ formA.course(class="form-control form-control-md") }}
+        </div>
+        <div class="form-group">
+          {{ formA.fname.label(class="form-control-label") }}
+          {{ formA.fname(class="form-control form-control-md") }}
+        </div>
+        <div class="form-group">
+          {{ formA.fpic.label() }}
+          {{ formA.fpic(class="form-control-file") }}
+          {% if formA.fpic.errors %}
+              {% for error in formA.fpic.errors %}
+                  <span class="text-danger">{{ error }}</span></br>
+              {% endfor %}
+          {% endif %}
+      </div>
+        
+      </fieldset>
+      <div class="form-group">
+        {{ formA.submit(class="btn btn-outline-primary") }}
+      </div>
+    </form>
+  </div>
+  <div class="content-section">
+    <form method="POST" action="">
+      {{ formD.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Delete Course</legend>
+        <div class="form-group">
+          {{ formD.batch.label(class="form-control-label") }}
+          {{ formD.batch(class="form-control form-control-md") }}
+        </div>
+        <div class="form-group">
+          {{ formD.coursee.label(class="form-control-label") }}
+          {{ formD.coursee(class="form-control form-control-md") }}
+        </div>
+      </fieldset>
+      <div class="form-group">
+        {{ formD.submit(class="btn btn-danger btn-sm m-1") }}
+      </div>
+    </form>
+  </div>
+  <div class="content-section">
+    <form method="POST" action="">
+      {{ formB.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Add Batch</legend>
+        <div class="form-group">
+          {{ formB.available_batch.label(class="form-control-label") }}
+          {{ formB.available_batch(class="form-control form-control-md") }}
+        </div>
+      </fieldset>
+      <div class="form-group">
+        {{ formB.submit(class="btn btn-outline-primary") }}
+      </div>
+    </form>
+  </div>
+{% endblock content %}

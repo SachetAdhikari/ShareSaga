@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <div class="content-section">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Contribute</legend>
+                <div class="form-group">
+                    {{ form.topic.label(class="form-control-label") }}
+                    {% if form.topic.errors %}
+                        {{ form.topic(class="form-control form-control-md is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.topic.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.topic(class="form-control form-control-md") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.files.label() }}
+                    {{ form.files(class="form-control-file") }}
+                    {% if form.files.errors %}
+                        {% for error in form.files.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-primary") }}
+            </div>
+        </form>
+ </div>
+    {% with a=available_files[0] %}
+        {% if a %}
+            <h2>Your Contributions on {{course}}</h2>
+        {% endif %}
+    {% endwith %}
+    {% for available in available_files.items %}
+        <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ url_for('static', filename='faculty_pics/' + 'resource.png') }}">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <small class="text-muted">{{ available.date_posted.strftime("%Y-%m-%d")}}</small>
+                    <small> <a class="text-muted" href="{{ url_for('edit_resource',user=user,sub=course,rID=available.id)}}">Edit</a> </small>
+                    <small>  <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button> </small>
+                </div>
+                <h3><a class="article-title" href="{{ url_for('download',file=available.resource_file_name) }}">{{ available.topic }}</a></h3>  
+            </div>
+        </article>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete File?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form action="{{ url_for('delete_resource',user=user,sub=course,rID=available.id)}}" method="POST">
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% for page_num in available_files.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+          {% if available_files.page == page_num %}
+            <a class="btn btn-info mb-4" href="{{ url_for('upload_resources',user=user,sub=course,page=page_num) }}" >{{ page_num }}</a>
+          {% else %}
+            <a class="btn btn-outline-info mb-4" href="{{ url_for('upload_resources',user=user,sub=course,page=page_num) }}" >{{ page_num }}</a>
+          {% endif %}
+        {% else %}
+          ...
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

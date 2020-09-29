@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if user %}
+      <h2> Your Contributions </h2>
+    {% elif available_resources %}
+      <h2> Available Resources </h2>
+    {% else %}
+      <h2> No Resources Uploaded Till Now! </h2>
+    {% endif %}
+    {% for resource in available_resources %}
+      <article class="media content-section">
+        {% with fp= available_resources[resource][1] %}
+          <img class="rounded-circle article-img" src="{{ url_for('static',filename='faculty_pics/'+ fp ) }}" >
+        {% endwith %}
+        <div class="media-body">
+          <div class="article-metadata">
+            <small class="text-muted">{{available_resources[resource][0]}}</small>
+          </div>
+          {% if user %}
+            <h2><a class="article-title" href= "{{ url_for('user_contributer_files',sub=resource,contributer=current_user.vregno) }}" > {{resource}} </a></h2>
+          {% else %}
+            <h2><a class="article-title" href= "{{url_for('resources_contributers',sub=resource)}}" > {{resource}} </a></h2>
+          {% endif %}
+      </article>
+    {% endfor %}
+{% endblock content %}

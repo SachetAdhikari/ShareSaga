@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2> Contributers for {{course}}</h2>
+
+    {% for contri in contributers %}
+        <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ url_for('static',filename='profile_pics/'+ contri.image_file) }}" >
+            <div class="media-body">
+                <div class="article-metadata">
+                    <small class="text-muted">{{ contri.fullname }}</small>
+                </div>
+               <h3> <a class="mr-2" href="{{ url_for('contributer_files',sub=course,contributer=contri.vregno) }}">{{ contri.vregno }}</a> </h3>
+            </div>
+        </article>
+    {% endfor %}
+    {% for page_num in cpage.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+          {% if cpage.page == page_num %}
+                <a class="btn btn-info mb-4" href="{{ url_for('resources_contributers',sub=course,page=page_num) }}" >{{ page_num }}</a>
+          {% else %}
+                <a class="btn btn-outline-info mb-4" href="{{ url_for('resources_contributers',sub=course,page=page_num) }}" >{{ page_num }}</a>
+          {% endif %}
+        {% else %}
+          ...
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

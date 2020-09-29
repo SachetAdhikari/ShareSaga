@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="register">
+    <h1 class="border-bottom pb-1 mb-3">VITian?</h1>
+    <div class="oauth mb-8 hoverable">
+        <img class="rounded-circle img-sm" src="{{ url_for('static', filename='google.png') }}">
+        <a class="ml-2" href="{{ url_for('signupwithGoogle') }}">Signup with VIT email!</a>
+    </div>
+    <div class="border-top pt-2 mt-4">
+        <small class="text-muted">
+            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+        </small>
+    </div>
+</div>
+    
+{% endblock content %}

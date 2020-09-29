@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+  {% for CO in contributeOn %}
+    <article class="media content-section">
+      {% with fp= CO.faculty_pic %}
+        <img class="rounded-circle article-img" src="{{ url_for('static',filename='faculty_pics/'+ fp ) }}" >
+      {% endwith %}
+      <div class="media-body">
+        <div class="article-metadata">
+          <small class="text-muted">{{CO.faculty_name}}</small>
+        </div>
+        <h2><a class="article-title" href="{{ url_for('upload_resources',user=current_user.vregno,sub=CO.course) }}">{{CO.course}}</a></h2>
+      </div>
+    </article>
+  {% endfor %}
+{% endblock content %}
