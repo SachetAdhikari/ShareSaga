@@ -1,66 +1,77 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="about-title">Our Team</div>
+<style>
+#content{
+    text-align: center;
+    padding-top: 25%;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                 0px 8px 13px rgba(0,0,0,0.1),
+                 0px 18px 23px rgba(0,0,0,0.1);
+}
+</style>
+<div class="about-title" id="content">Our Team</div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="flex-container justify-content-around">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<div class="container">
     
-        <div class="card">
-        <img src="{{ url_for('static', filename='Sachet.JPG') }}" alt="Sachet" style="width:100%">
-        <h2>Sachet Adhikari</h2>
-        <p class="title">Co-Founder, ShareSaga</p>
-        <p>VIT University</p>
-        <div class="d-flex justify-content-around mb-4">
-            <a class="card-anchor" href="https://github.com/SachetAdhikari"><i class="fa fa-github"></i></a>
-            <a class="card-anchor" href="https://www.instagram.com/sachetadhikari/"><i class="fa fa-instagram"></i></a>
-            <a class="card-anchor" href="https://www.linkedin.com/in/sachet-adhikari-7000711b0/"><i class="fa fa-linkedin"></i></a>
-            <a class="card-anchor" href="https://www.facebook.com/people/Sachet-Adhikari/100005144505038"><i class="fa fa-facebook"></i></a>
-        </div>
-        <p><a href="mailto:sachet.adhikari2019@vitstudent.ac.in" class="button card-btn">Contact</a></p>
-        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <img src="{{ url_for('static', filename='Sachet.JPG') }}" alt="Sachet" style="width:100%">
+                <h2>Sachet Adhikari</h2>
+                <p class="title">Co-Founder, ShareSaga</p>
+                <p>VIT University</p>
+                <div class="d-flex justify-content-around mb-4">
+                    <a class="card-anchor" href="https://github.com/SachetAdhikari"><i class="fa fa-github"></i></a>
+                    <a class="card-anchor" href="https://www.instagram.com/sachetadhikari/"><i class="fa fa-instagram"></i></a>
+                    <a class="card-anchor" href="https://www.linkedin.com/in/sachet-adhikari-7000711b0/"><i class="fa fa-linkedin"></i></a>
+                    <a class="card-anchor" href="https://www.facebook.com/people/Sachet-Adhikari/100005144505038"><i class="fa fa-facebook"></i></a>
+                </div>
+                <p><a href="mailto:sachet.adhikari2019@vitstudent.ac.in" class="button card-btn">Contact</a></p>
+            </div>
     
-        <div class="card">
-        <img src="{{ url_for('static', filename='Gunjan.jpg') }}" alt="Gunjan" style="width:100%">
-        <h2>Gunjan Raj Tiwari</h2>
-        <p class="title">Co-Founder, ShareSaga</p>
-        <p>VIT University</p>
-        <div class="d-flex justify-content-around mb-4">
-            <a class="card-anchor" href="https://github.com/GunjanRajTiwari"><i class="fa fa-github"></i></a>
-            <a class="card-anchor" href="https://www.instagram.com/gunjan_raj_tiwari/"><i class="fa fa-instagram"></i></a>
-            <a class="card-anchor" href="https://www.linkedin.com/in/gunjan-raj-tiwari-bb4624187/"><i class="fa fa-linkedin"></i></a>
-            <a class="card-anchor" href="https://www.facebook.com/gunjanraj.tiwari"><i class="fa fa-facebook"></i></a>
-        </div>
-        <p><a href="mailto:im.gunjan1@gmail.com" class="button card-btn">Contact</a></p>
-        </div>
+            <div class="col-lg-3 col-sm-6">
+                <img src="{{ url_for('static', filename='Gunjan.jpg') }}" alt="Gunjan" style="width:100%">
+                <h2>Gunjan Raj Tiwari</h2>
+                <p class="title">Co-Founder, ShareSaga</p>
+                <p>VIT University</p>
+                <div class="d-flex justify-content-around mb-4">
+                    <a class="card-anchor" href="https://github.com/GunjanRajTiwari"><i class="fa fa-github"></i></a>
+                    <a class="card-anchor" href="https://www.instagram.com/gunjan_raj_tiwari/"><i class="fa fa-instagram"></i></a>
+                    <a class="card-anchor" href="https://www.linkedin.com/in/gunjan-raj-tiwari-bb4624187/"><i class="fa fa-linkedin"></i></a>
+                    <a class="card-anchor" href="https://www.facebook.com/gunjanraj.tiwari"><i class="fa fa-facebook"></i></a>
+                </div>
+                <p><a href="mailto:im.gunjan1@gmail.com" class="button card-btn">Contact</a></p>
+            </div>
     
         
-        <div class="card">
-        <img src="{{ url_for('static', filename='Sandesh.jpeg') }}" alt="Sandesh" style="width:100%">
-        <h2>Sandesh Dhungana</h2>
-        <p class="title">Co-Founder, ShareSaga</p>
-        <p>VIT University</p>
-        <div class="d-flex justify-content-around mb-4">
-            <a class="card-anchor" href="https://github.com/sandesh32"><i class="fa fa-github"></i></a>
-            <a class="card-anchor" href="https://www.instagram.com/dh.sandesh/"><i class="fa fa-instagram"></i></a>
-            <a class="card-anchor" href="https://www.linkedin.com/in/sandesh-dhungana-b5ba251a2/"><i class="fa fa-linkedin"></i></a>
-            <a class="card-anchor" href="https://www.facebook.com/dhungana.sandesh"><i class="fa fa-facebook"></i></a>
-        </div>
-        <p><a href="mailto:sandesh.dhungana2019@vitstudent.ac.in" class="button card-btn">Contact</a></p>
-        </div>
+            <div class="col-lg-3 col-sm-6">
+                <img src="{{ url_for('static', filename='Sandesh.jpeg') }}" alt="Sandesh" style="width:100%">
+                <h2>Sandesh Dhungana</h2>
+                <p class="title">Co-Founder, ShareSaga</p>
+                <p>VIT University</p>
+                <div class="d-flex justify-content-around mb-4">
+                    <a class="card-anchor" href="https://github.com/sandesh32"><i class="fa fa-github"></i></a>
+                    <a class="card-anchor" href="https://www.instagram.com/dh.sandesh/"><i class="fa fa-instagram"></i></a>
+                    <a class="card-anchor" href="https://www.linkedin.com/in/sandesh-dhungana-b5ba251a2/"><i class="fa fa-linkedin"></i></a>
+                    <a class="card-anchor" href="https://www.facebook.com/dhungana.sandesh"><i class="fa fa-facebook"></i></a>
+                </div>
+                <p><a href="mailto:sandesh.dhungana2019@vitstudent.ac.in" class="button card-btn">Contact</a></p>
+            </div>
     
        
-        <div class="card">
-        <img src="{{ url_for('static', filename='Kapil.jpg') }}" alt="Kapil" style="width:100%">
-        <h2>Kapil Dhungana</h2>
-        <p class="title">Co-Founder, ShareSaga</p>
-        <p>VIT University</p>
-        <div class="d-flex justify-content-around mb-4">
-            <a class="card-anchor" href="https://github.com/kapil-coder"><i class="fa fa-github"></i></a>
-            <a class="card-anchor" href="#"><i class="fa fa-instagram"></i></a>
-            <a class="card-anchor" href="https://www.linkedin.com/in/kapil-dhungana-28ba55199"><i class="fa fa-linkedin"></i></a>
-            <a class="card-anchor" href="https://www.facebook.com/kapil.dhungana.140"><i class="fa fa-facebook"></i></a>
-        </div>
-        <p><a href="mailto:kapil.dhungana2019@vitstudent.ac.in" class="button card-btn">Contact</a></p>
-        </div>
+            <div class="col-lg-3 col-sm-6">
+                <img src="{{ url_for('static', filename='Kapil.jpg') }}" alt="Kapil" style="width:100%">
+                <h2>Kapil Dhungana</h2>
+                <p class="title">Co-Founder, ShareSaga</p>
+                <p>VIT University</p>
+                <div class="d-flex justify-content-around mb-4">
+                    <a class="card-anchor" href="https://github.com/kapil-coder"><i class="fa fa-github"></i></a>
+                    <a class="card-anchor" href="#"><i class="fa fa-instagram"></i></a>
+                    <a class="card-anchor" href="https://www.linkedin.com/in/kapil-dhungana-28ba55199"><i class="fa fa-linkedin"></i></a>
+                    <a class="card-anchor" href="https://www.facebook.com/kapil.dhungana.140"><i class="fa fa-facebook"></i></a>
+                </div>
+                <p><a href="mailto:kapil.dhungana2019@vitstudent.ac.in" class="button card-btn">Contact</a></p>
+            </div>
     
 </div>
 

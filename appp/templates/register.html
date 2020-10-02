@@ -1,13 +1,27 @@
 {% extends "layout.html" %}
 {% block content %}
+<style>
+    hr{
+        width: 400px;
+        border-top: 1px solid #f8f8f8;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+    }
+    #content{
+        text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                     0px 8px 13px rgba(0,0,0,0.1),
+                     0px 18px 23px rgba(0,0,0,0.1);
+    }
+</style>
 <div class="register">
-    <h1 class="border-bottom pb-1 mb-3">VITian?</h1>
+    <h1 id="content">VITian?</h1>
+    <hr>
     <div class="oauth mb-8 hoverable">
         <img class="rounded-circle img-sm" src="{{ url_for('static', filename='google.png') }}">
         <a class="ml-2" href="{{ url_for('signupwithGoogle') }}">Signup with VIT email!</a>
     </div>
-    <div class="border-top pt-2 mt-4">
-        <small class="text-muted">
+    <div>
+        <hr>
+        <small class="text-muted" id="content">
             Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
         </small>
     </div>

@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
-    
+    <!-- Using Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     {% if title %}
         <title>ShareSaga - {{title}} </title>
     {% else %}
@@ -22,7 +23,7 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">ShareSaga</a>
+          <a class="navbar-brand mr-4" href="/"><i class="fas fa-paper-plane"></i></i> ShareSaga</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -48,8 +49,8 @@
                 </div>
 
               {% else %}
-                <a class="nav-item nav-link" href="{{url_for('login')}}">Login</a>
-                <a class="nav-item nav-link" href="{{url_for('register')}}">Register</a>
+                <a class="nav-item nav-link" href="{{url_for('login')}}">Login <i class="fas fa-user"></i></a>
+                <a class="nav-item nav-link" href="{{url_for('register')}}">Register <i class="fas fa-user-plus"></i></a>
               {% endif %}
             </div>
           </div>
@@ -58,7 +59,7 @@
     </header>
     <main role="main" class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             {% with messages= get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     {% for category, message in messages %}
